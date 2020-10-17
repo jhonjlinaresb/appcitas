@@ -4,7 +4,7 @@ const app=express();
 const cors=require('./mw/cors');
 
 //Modular imports
-const {showUsers} = require('./db/dbuser');
+const {showUsers, logoutUser} = require('./db/dbuser');
 const {showUsersId} = require('./db/dbuser');
 const {registerUser} = require('./db/dbuser');
 const {deleteUser} = require('./db/dbuser');
@@ -24,8 +24,11 @@ dbconnect();
 //user actions
 app.get('/user/showAll', showUsers);
 app.get('/user/id/:userId', showUsersId);
+
 app.post('/user/register', registerUser);
 app.post('/user/login', loginUser);
+app.post('/user/logout', logoutUser);
+
 app.delete('/user/delete', deleteUser);
 app.put('/user/modify', modifyUser);
 

@@ -182,7 +182,7 @@ const logoutUser = async (req, res) => {
         };
         const user = await UserModel.findOneAndUpdate(email, emptyToken);
         res.send({
-            message:`Goodbye ${user.firstname}`
+            message:`Goodbye ${user.username}`
         });
     } catch (error) {
         console.error(error);

@@ -6,7 +6,7 @@
 ###### - ES6.
 
 For requests to the server at the end points use POSTMAN.
-![https://www.postman.com/](https://ibb.co/tmMcL1C)
+![image](https://i.ibb.co/BzVjnYs/postman.png/ "https://www.postman.com/").
 
 
 Installation:

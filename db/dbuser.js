@@ -172,7 +172,25 @@ const loginUser = async (req, res) => {
 }
 
 const logoutUser = async (req, res) => {
-
+    try {
+        //const token = { token: token };
+        const email = {
+            email: req.body.email
+        };
+        const emptyToken = {
+            token: ""
+        };
+        const user = await UserModel.findOneAndUpdate(email, emptyToken);
+        res.send({
+            message:`Goodbye ${user.firstname}`
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({
+            error,
+            message: 'There was a problem trying to disconnected the user'
+        })
+    }
 }
 
 module.exports = {

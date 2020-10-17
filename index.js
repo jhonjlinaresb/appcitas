@@ -10,6 +10,8 @@ const {registerUser} = require('./db/dbuser');
 const {deleteUser} = require('./db/dbuser');
 const {modifyUser} = require('./db/dbuser');
 const {loginUser} = require('./db/dbuser');
+const {userAppoinments, adduserAppoinment} = require('./db/dbappointment');
+
 
 //Middleware
 app.use(cors);
@@ -24,10 +26,12 @@ dbconnect();
 //user actions
 app.get('/user/showAll', showUsers);
 app.get('/user/id/:userId', showUsersId);
+app.get('/user/:dni/appoinments', userAppoinments);
 
 app.post('/user/register', registerUser);
 app.post('/user/login', loginUser);
 app.post('/user/logout', logoutUser);
+app.post('/user/:dni/appoinments', adduserAppoinment);
 
 app.delete('/user/delete', deleteUser);
 app.put('/user/modify', modifyUser);

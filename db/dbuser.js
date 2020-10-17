@@ -62,7 +62,9 @@ const registerUser = async (req, res) => {
         const user = await new UserModel({
 		    username: bodyData.username,
 		    email: bodyData.email,
-		    password: hashPass
+            password: hashPass,
+            dni:bodyData.dni,
+            token: ''
         }).save();
 
         res.send({
@@ -138,13 +140,7 @@ const modifyUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
 
-    // let usuarioEncontrado = await UserModel.findOne({
-    //     $and : [
-    //         { email:  req.body.email}, { password: req.body.password }
-    //     ]
-    // })
-
-    let usuarioEncontrado = await UserModel.findOne({
+    const usuarioEncontrado = await UserModel.findOne({
         email: req.body.email
     });
 
@@ -157,9 +153,20 @@ const loginUser = async (req, res) => {
         let passwordOk = await bcrypt.compare(req.body.password, usuarioEncontrado.password);
 
         if(passwordOk){
-            res.send({
-                name: usuarioEncontrado.username,
+            const email = {
                 email: usuarioEncontrado.email
+            };
+            const token = {
+                token: 'gatuno'
+            };
+            
+            let user1 = await UserModel.findOne(email);
+            user1.token = user1.password;
+            await user1.save(); 
+            res.send({
+                name: user1.username,
+                email: user1.email,
+                token: user1.token
             })
         }else{
             res.send({

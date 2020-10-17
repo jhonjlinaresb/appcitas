@@ -1,24 +1,23 @@
 const AppointmentModel = require('../models/appointment');
-const UserModel = require('../models/user');
+const UserModel=require('../models/User');
 
-
-const dbAppointment = {
-    async addOne(req, res) {
-        let user = await UserModel.findOne({
-            email: req.params.email
-        });
-
-        if (!user.token) {
+const adduserAppoinment = async (req, res)  => {
+          let user = await UserModel.findOne({
+            dni: req.params.dni
+         });
+       /*  if (!user.token) {
             res.status(400).send({
-                message: 'Debes estar logeado'
+                message: 'Debes estar logueado'
             });
 
-        }else{
+        }else{ */
         try {
             const appointment = await AppointmentModel({
                 status: req.body.status,
                 date: req.body.date,
-                token_id: user.token
+                observations: req.body.observations,
+                dni: req.params.dni,
+                dentist: req.body.dentist
             }).save();
             res.status(201).send(
                 appointment
@@ -29,10 +28,12 @@ const dbAppointment = {
                 error,
                 message: 'Error tal'
             })
-        }}
+        }
+    //}
 
-    },
-    async deleteOne(req, res) {
+    }
+
+    const deleteOne = async (req, res)  => {
         try {
             const appointment = await AppointmentModel.findByIdAndDelete({
                 _id: req.params._id
@@ -48,12 +49,12 @@ const dbAppointment = {
             })
             
         }
-    },
+    }
 
-    async getAll(req, res) {
+    const userAppoinments = async (req, res) => {
         try {
             const appointment = await AppointmentModel.find({
-                token_id: req.params.token_id
+                dni: req.params.dni
             })
             res.send({
                 appointment
@@ -67,6 +68,6 @@ const dbAppointment = {
         }
     }
 
-}
-
-module.exports = dbAppointment;
+module.exports = {adduserAppoinment, 
+                  deleteOne,
+                  userAppoinments};

@@ -6,7 +6,8 @@
 ###### - ES6.
 
 For requests to the server at the end points use POSTMAN.
-![image](https://i.ibb.co/BzVjnYs/postman.png/ "https://www.postman.com/").
+
+![Postman](https://i.ibb.co/W0vrRzh/image.png)
 
 
 Installation:
@@ -15,3 +16,10 @@ Installation:
 > npm i express
 
 > npm i mongoose
+
+After go to the MongoDB.
+
+![MongoDB](https://i.ibb.co/wCB0Bkk/image.png)
+
+Create the Database and Collections in Mongo Atlas.
+![Atlas](https://i.ibb.co/nzvsq4C/image.png)

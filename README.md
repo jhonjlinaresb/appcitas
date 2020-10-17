@@ -1,6 +1,7 @@
 ## APP Citas
 ### Backend made with technologies:
 ###### - MongoDB.
+###### - NodeJS.
 ###### - Mongoose.
 ###### - Express.
 ###### - ES6.

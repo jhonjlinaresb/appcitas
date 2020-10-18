@@ -12,7 +12,11 @@ const AppointmentSchema = mongoose.Schema({
     observations: {
         type: String
     },
-    token_id: {
+    dni: {
+        type: String,
+        required: true
+    },
+    dentist: {
         type: String,
         required: true
     }

@@ -36,9 +36,6 @@ app.post('/user/:dni/appoinments', adduserAppoinment);
 app.delete('/user/delete', deleteUser);
 app.put('/user/modify', modifyUser);
 
-//film actions
-
-//order actions
 
 //port listen
 app.listen(3000, ()=> console.log('>>>SERVER ONLINE'));

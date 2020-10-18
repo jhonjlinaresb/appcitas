@@ -2,29 +2,15 @@ const AppointmentModel = require('../models/appointment');
 const UserModel=require('../models/User');
 
 const adduserAppoinment = async (req, res)  => {
-          let user = await UserModel.findOne({
+        console.log(req.body);
+        const appointment = await AppointmentModel({
+            status: req.body.status,
+            date: req.body.date,
+            observations: req.body.observations,
+            dentist: req.body.dentist,
             dni: req.params.dni
-         });
-        try {
-            const appointment = await AppointmentModel({
-                status: req.body.status,
-                date: req.body.date,
-                observations: req.body.observations,
-                dni: req.params.dni,
-                dentist: req.body.dentist
-            }).save();
-            res.status(201).send(
-                appointment
-            );
-        } catch (error) {
-            console.error(error);
-            res.status(500).send({
-                error,
-                message: 'Error Fatal'
-            })
-        }
-    //}
-
+        }).save();
+        res.status(201).send(appointment);
     }
 
     const deleteOne = async (req, res)  => {

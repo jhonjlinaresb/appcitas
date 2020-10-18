@@ -19,6 +19,7 @@ app.use(express.json());
 
 //db connection
 const dbconnect = require('./config/dbconnect');
+const { deleteOne } = require('./models/User');
 dbconnect();
 
 //ACTIONS
@@ -34,6 +35,8 @@ app.post('/user/logout', logoutUser);
 app.post('/user/:dni/appoinments', adduserAppoinment);
 
 app.delete('/user/delete', deleteUser);
+app.delete('user/:dni/appoinments', deleteOne);
+
 app.put('/user/modify', modifyUser);
 
 

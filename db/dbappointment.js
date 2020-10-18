@@ -15,17 +15,17 @@ const adduserAppoinment = async (req, res)  => {
 
     const deleteOne = async (req, res)  => {
         try {
-            const appointment = await AppointmentModel.findByIdAndDelete({
-                _id: req.params._id
+            const appointment = await AppointmentModel.findOneAndDelete({
+                dni: req.params.dni
             })
             res.send({
-                message: 'cita borrada',
+                message: 'Delete cite',
                 appointment
             })
         } catch (error) {
             console.error(error);
             res.status(500).send({
-                message: 'error al borrar la cita'
+                message: 'Error to delete the cite'
             })
             
         }

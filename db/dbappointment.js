@@ -5,12 +5,6 @@ const adduserAppoinment = async (req, res)  => {
           let user = await UserModel.findOne({
             dni: req.params.dni
          });
-       /*  if (!user.token) {
-            res.status(400).send({
-                message: 'Debes estar logueado'
-            });
-
-        }else{ */
         try {
             const appointment = await AppointmentModel({
                 status: req.body.status,
@@ -26,7 +20,7 @@ const adduserAppoinment = async (req, res)  => {
             console.error(error);
             res.status(500).send({
                 error,
-                message: 'Error tal'
+                message: 'Error Fatal'
             })
         }
     //}

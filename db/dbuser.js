@@ -63,9 +63,9 @@ const registerUser = async (req, res) => {
 		    username: bodyData.username,
 		    email: bodyData.email,
             password: hashPass,
-            dni:bodyData.dni,
-            token: ''
-        }).save();
+            dni:bodyData.dni
+        }).
+        save();
 
         res.send({
             message: "Account created successfully.",
@@ -156,17 +156,13 @@ const loginUser = async (req, res) => {
             const email = {
                 email: usuarioEncontrado.email
             };
-            const token = {
-                token: 'gatuno'
-            };
             
             let user1 = await UserModel.findOne(email);
             user1.token = user1.password;
             await user1.save(); 
             res.send({
                 name: user1.username,
-                email: user1.email,
-                token: user1.token
+                email: user1.email
             })
         }else{
             res.send({
@@ -183,9 +179,6 @@ const logoutUser = async (req, res) => {
         //const token = { token: token };
         const email = {
             email: req.body.email
-        };
-        const emptyToken = {
-            token: ""
         };
         const user = await UserModel.findOneAndUpdate(email, emptyToken);
         res.send({

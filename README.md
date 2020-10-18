@@ -24,3 +24,5 @@ After go to the MongoDB.
 
 Create the Database and Collections in Mongo Atlas.
 ![Atlas](https://i.ibb.co/nzvsq4C/image.png)
+
+Create a new branch with name featuredelete for endpoint DeleteAppoiment
